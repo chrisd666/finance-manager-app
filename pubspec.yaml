@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
   jiffy: ^4.1.0
+  animated_bottom_navigation_bar: ^0.3.2
 
 dev_dependencies:
   flutter_test:

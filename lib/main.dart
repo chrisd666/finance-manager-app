@@ -1,4 +1,6 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:finance_manager/screens/daily_screen.dart';
+import 'package:finance_manager/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
 import './palette.dart';
 
@@ -28,16 +30,20 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
           accentColor: Colors.deepPurpleAccent),
-      home: Scaffold(
-        body: _Body(_onItemTapped, _selectedIndex),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _onItemTapped(4),
-          child: Icon(
-            Icons.add,
-            size: 25,
+      home: SafeArea(
+        child: Scaffold(
+          body: _Body(_onItemTapped, _selectedIndex),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => _onItemTapped(4),
+            child: Icon(
+              Icons.add,
+              size: 25,
+            ),
           ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: _Footer(_onItemTapped, _selectedIndex),
         ),
-        bottomNavigationBar: _Footer(_onItemTapped, _selectedIndex),
       ),
     );
   }
@@ -55,9 +61,7 @@ class _Body extends StatelessWidget {
       index: currentIndex,
       children: [
         DailyScreen(),
-        Center(
-          child: Text("Stats Page"),
-        ),
+        StatsScreen(),
         Center(
           child: Text("Create Budget Page"),
         ),
@@ -80,19 +84,22 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.calculate), label: "Transactions"),
-        BottomNavigationBarItem(icon: Icon(Icons.auto_graph), label: "Stats"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet), label: "Wallet"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+    return AnimatedBottomNavigationBar(
+      activeColor: Theme.of(context).primaryColor,
+      splashColor: Theme.of(context).primaryColorDark,
+      inactiveColor: Theme.of(context).primaryColorLight,
+      icons: [
+        Icons.calculate,
+        Icons.auto_graph,
+        Icons.account_balance_wallet,
+        Icons.person,
       ],
-      currentIndex: currentIndex,
-      selectedItemColor: Theme.of(context).primaryColor,
-      unselectedIconTheme:
-          IconThemeData(color: Theme.of(context).primaryColorLight),
+      activeIndex: currentIndex,
+      gapLocation: GapLocation.center,
+      notchSmoothness: NotchSmoothness.softEdge,
+      leftCornerRadius: 10,
+      rightCornerRadius: 10,
+      iconSize: 25,
       onTap: onTap,
     );
   }
