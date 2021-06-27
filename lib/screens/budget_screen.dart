@@ -1,3 +1,4 @@
+import 'package:finance_manager/models/Budget.dart';
 import 'package:finance_manager/models/Tranasction_dates.dart';
 import 'package:flutter/material.dart';
 
@@ -107,27 +108,100 @@ class _BudgetScreenState extends State<BudgetScreen> {
           SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.01),
-                        spreadRadius: 10,
-                        blurRadius: 3)
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.all(25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("data")],
+          Column(
+            children: List.generate(budgets.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.01),
+                            spreadRadius: 10,
+                            blurRadius: 3)
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          budgets[index].name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13,
+                              color: Colors.grey),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "\$${budgets[index].price}",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 3),
+                                  child: Text(
+                                    "${budgets[index].percentage * 100}%",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13,
+                                        color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text(
+                                "\$5000.00",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13,
+                                    color: Colors.grey),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                                width: size.width - 40,
+                                height: 4,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(5))),
+                            Container(
+                                width: (size.width - 40) *
+                                    budgets[index].percentage,
+                                height: 4,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    borderRadius: BorderRadius.circular(5)))
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
           )
         ],
       ),
