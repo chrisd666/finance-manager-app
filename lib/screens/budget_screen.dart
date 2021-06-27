@@ -1,6 +1,7 @@
 import 'package:finance_manager/models/Budget.dart';
 import 'package:finance_manager/models/Tranasction_dates.dart';
 import 'package:flutter/material.dart';
+import '../widgets/header.dart';
 
 class BudgetScreen extends StatefulWidget {
   const BudgetScreen({Key? key}) : super(key: key);
@@ -32,24 +33,10 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   top: 60, left: 20, right: 20, bottom: 25),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Budgets",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      Row(
-                        children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.search))
-                        ],
-                      )
-                    ],
-                  ),
+                  Header("Budgets", [
+                    HeaderIconButton(Icon(Icons.add), () {}),
+                    HeaderIconButton(Icon(Icons.search), () {})
+                  ]),
                   SizedBox(
                     height: 25,
                   ),

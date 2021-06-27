@@ -1,6 +1,7 @@
-import 'package:finance_manager/models/Tranasction_dates.dart';
-import 'package:finance_manager/models/Transaction.dart';
 import 'package:flutter/material.dart';
+import '../widgets/header.dart';
+import '../models/Tranasction_dates.dart';
+import '../models/Transaction.dart';
 
 class DailyScreen extends StatefulWidget {
   @override
@@ -44,19 +45,8 @@ class __BodyState extends State<_Body> {
                   EdgeInsets.only(top: 60, bottom: 25, right: 20, left: 20),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Daily Transaction",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.search))
-                    ],
-                  ),
+                  Header("Daily Transaction",
+                      [HeaderIconButton(Icon(Icons.search), () {})]),
                   SizedBox(
                     height: 25,
                   ),

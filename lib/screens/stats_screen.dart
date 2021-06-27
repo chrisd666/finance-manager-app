@@ -1,6 +1,7 @@
 import 'package:finance_manager/models/Tranasction_dates.dart';
-import 'package:finance_manager/widgets/stats_chart.dart';
 import 'package:flutter/material.dart';
+import '../widgets/header.dart';
+import '../widgets/stats_chart.dart';
 
 class StatsScreen extends StatefulWidget {
   @override
@@ -31,19 +32,8 @@ class _StatsScreenState extends State<StatsScreen> {
                     top: 60, left: 20, right: 20, bottom: 25),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Stats",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.search))
-                      ],
-                    ),
+                    Header(
+                        "Stats", [HeaderIconButton(Icon(Icons.search), () {})]),
                     SizedBox(
                       height: 25,
                     ),

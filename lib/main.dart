@@ -1,9 +1,8 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:finance_manager/screens/budget_screen.dart';
-import 'package:finance_manager/screens/daily_screen.dart';
-import 'package:finance_manager/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
-import './palette.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import './screens/budget_screen.dart';
+import './screens/daily_screen.dart';
+import './screens/stats_screen.dart';
 
 void main() {
   runApp(MyApp());
