@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:finance_manager/screens/budget_screen.dart';
 import 'package:finance_manager/screens/daily_screen.dart';
 import 'package:finance_manager/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
@@ -62,14 +63,12 @@ class _Body extends StatelessWidget {
       children: [
         DailyScreen(),
         StatsScreen(),
-        Center(
-          child: Text("Create Budget Page"),
-        ),
-        Center(
-          child: Text("Budget Page"),
-        ),
+        BudgetScreen(),
         Center(
           child: Text("Profile Page"),
+        ),
+        Center(
+          child: Text("Create Budget Page"),
         ),
       ],
     );
