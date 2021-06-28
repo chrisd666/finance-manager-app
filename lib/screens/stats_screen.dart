@@ -1,7 +1,8 @@
-import 'package:finance_manager/models/Tranasction_dates.dart';
+import 'package:finance_manager/widgets/custom_year_picker.dart';
 import 'package:flutter/material.dart';
 import '../widgets/header.dart';
 import '../widgets/stats_chart.dart';
+import '../widgets/custom_month_picker.dart';
 
 class StatsScreen extends StatefulWidget {
   @override
@@ -34,58 +35,11 @@ class _StatsScreenState extends State<StatsScreen> {
                   children: [
                     Header(
                         "Stats", [HeaderIconButton(Icon(Icons.search), () {})]),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(months.length, (index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              activeMonthIdx = index;
-                            });
-                          },
-                          child: Container(
-                            width: (size.width - 40) / 7,
-                            child: Column(
-                              children: [
-                                Text(
-                                  months[index].year,
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: activeMonthIdx == index
-                                          ? Theme.of(context).primaryColor
-                                          : Colors.transparent,
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(
-                                          color:
-                                              Theme.of(context).primaryColor)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 7, bottom: 7, right: 12, left: 12),
-                                    child: Text(
-                                      months[index].month,
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        color: activeMonthIdx == index
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                    )
+                    // SizedBox(
+                    //   height: 25,
+                    // ),
+                    CustomYearPicker(),
+                    CustomMonthPicker()
                   ],
                 ),
               ),

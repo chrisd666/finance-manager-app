@@ -12,7 +12,7 @@ class _DailyScreenState extends State<DailyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.grey.shade50,
       body: _Body(),
     );
   }
@@ -36,9 +36,9 @@ class __BodyState extends State<_Body> {
           Container(
             decoration: BoxDecoration(color: Colors.white, boxShadow: [
               BoxShadow(
-                  color: Colors.grey.withOpacity(0.01),
-                  spreadRadius: 10,
-                  blurRadius: 3)
+                  color: Colors.grey.withOpacity(0.3),
+                  offset: Offset(0.0, 1.0),
+                  blurRadius: 6)
             ]),
             child: Padding(
               padding:

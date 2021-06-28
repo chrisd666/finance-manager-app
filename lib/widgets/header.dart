@@ -20,8 +20,10 @@ class Header extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(fontWeight: FontWeight.bold),
         ),
         Row(
           children: iconButtonList

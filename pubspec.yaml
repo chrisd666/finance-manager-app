@@ -31,6 +31,7 @@ dependencies:
   jiffy: ^4.1.0
   animated_bottom_navigation_bar: ^0.3.2
   fl_chart: ^0.36.2
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:

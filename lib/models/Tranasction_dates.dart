@@ -5,9 +5,9 @@ class TransactionDays {
 }
 
 class TransactionMonths {
-  final String year, month;
+  final String month;
 
-  const TransactionMonths(this.year, this.month);
+  const TransactionMonths(this.month);
 }
 
 List<TransactionDays> days = [
@@ -21,10 +21,16 @@ List<TransactionDays> days = [
 ];
 
 List<TransactionMonths> months = [
-  TransactionMonths("2021", "Jan"),
-  TransactionMonths("2021", "Feb"),
-  TransactionMonths("2021", "Mar"),
-  TransactionMonths("2021", "Apr"),
-  TransactionMonths("2021", "May"),
-  TransactionMonths("2021", "Jun"),
+  TransactionMonths("Jan"),
+  TransactionMonths("Feb"),
+  TransactionMonths("Mar"),
+  TransactionMonths("Apr"),
+  TransactionMonths("May"),
+  TransactionMonths("Jun"),
+  TransactionMonths("Jul"),
+  TransactionMonths("Aug"),
+  TransactionMonths("Sep"),
+  TransactionMonths("Oct"),
+  TransactionMonths("Nov"),
+  TransactionMonths("Dec"),
 ];
