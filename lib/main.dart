@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './screens/budget_screen.dart';
-import './screens/daily_screen.dart';
+import 'screens/transaction_screen.dart';
 import './screens/stats_screen.dart';
 
 void main() {
@@ -63,7 +63,7 @@ class _Body extends StatelessWidget {
     return IndexedStack(
       index: currentIndex,
       children: [
-        DailyScreen(),
+        TransactionScreen(),
         StatsScreen(),
         BudgetScreen(),
         Center(

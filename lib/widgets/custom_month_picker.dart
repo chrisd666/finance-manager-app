@@ -1,59 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:finance_manager/models/Tranasction_dates.dart';
+import 'package:jiffy/jiffy.dart';
 
 class CustomMonthPicker extends StatefulWidget {
+  const CustomMonthPicker({Key? key}) : super(key: key);
+
   @override
   _CustomMonthPickerState createState() => _CustomMonthPickerState();
 }
 
 class _CustomMonthPickerState extends State<CustomMonthPicker> {
-  int activeMonthIdx = 4;
+  Jiffy selectedDate = Jiffy();
+
+  void handleDateChange(int step) {
+    setState(() {
+      selectedDate = selectedDate.add(months: step);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      children: List.generate(months.length, (index) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              activeMonthIdx = index;
-            });
-          },
-          child: Container(
-            width: (size.width - 40) / 7,
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: activeMonthIdx == index
-                          ? Theme.of(context).primaryColor
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(5),
-                      border:
-                          Border.all(color: Theme.of(context).primaryColor)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 7, bottom: 7, right: 12, left: 12),
-                    child: Text(
-                      months[index].month,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: activeMonthIdx == index
-                            ? Colors.white
-                            : Colors.black,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      }),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          selectedDate.format("MMMM yyyy"),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1!
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        Row(children: [
+          IconButton(
+              icon: Icon(Icons.chevron_left),
+              onPressed: () => handleDateChange(-1)),
+          IconButton(
+              icon: Icon(Icons.chevron_right),
+              onPressed: () => handleDateChange(1)),
+        ])
+      ],
     );
   }
 }

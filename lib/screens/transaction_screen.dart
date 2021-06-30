@@ -1,14 +1,15 @@
+import 'package:finance_manager/widgets/pnl_bar.dart';
 import 'package:flutter/material.dart';
 import '../widgets/header.dart';
-import '../models/Tranasction_dates.dart';
 import '../models/Transaction.dart';
+import 'package:finance_manager/widgets/custom_month_picker.dart';
 
-class DailyScreen extends StatefulWidget {
+class TransactionScreen extends StatefulWidget {
   @override
-  _DailyScreenState createState() => _DailyScreenState();
+  _TransactionScreenState createState() => _TransactionScreenState();
 }
 
-class _DailyScreenState extends State<DailyScreen> {
+class _TransactionScreenState extends State<TransactionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,57 +48,11 @@ class __BodyState extends State<_Body> {
                 children: [
                   Header("Daily Transaction",
                       [HeaderIconButton(Icon(Icons.search), () {})]),
-                  SizedBox(
-                    height: 25,
+                  CustomMonthPicker(),
+                  Divider(
+                    thickness: 0.8,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(days.length, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            activeDay = index;
-                          });
-                        },
-                        child: Container(
-                          width: (size.width - 40) / 7,
-                          child: Column(
-                            children: [
-                              Text(
-                                days[index].label,
-                                style: TextStyle(fontSize: 10),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    color: activeDay == index
-                                        ? Theme.of(context).primaryColor
-                                        : Colors.transparent,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        color: Theme.of(context).primaryColor)),
-                                child: Center(
-                                  child: Text(
-                                    days[index].day,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: activeDay == index
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  )
+                  PNLBar()
                 ],
               ),
             ),

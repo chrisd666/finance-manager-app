@@ -1,4 +1,4 @@
-import 'package:finance_manager/widgets/custom_year_picker.dart';
+import 'package:finance_manager/widgets/custom_month_picker.dart';
 import 'package:flutter/material.dart';
 import '../widgets/header.dart';
 import '../widgets/stats_chart.dart';
@@ -38,7 +38,6 @@ class _StatsScreenState extends State<StatsScreen> {
                     // SizedBox(
                     //   height: 25,
                     // ),
-                    CustomYearPicker(),
                     CustomMonthPicker()
                   ],
                 ),
