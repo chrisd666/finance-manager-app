@@ -33,20 +33,17 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.deepPurpleAccent,
         textTheme: GoogleFonts.ubuntuTextTheme(),
       ),
-      home: SafeArea(
-        child: Scaffold(
-          body: _Body(_onItemTapped, _selectedIndex),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => _onItemTapped(4),
-            child: Icon(
-              Icons.add,
-              size: 25,
-            ),
+      home: Scaffold(
+        body: _Body(_onItemTapped, _selectedIndex),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => _onItemTapped(4),
+          child: Icon(
+            Icons.add,
+            size: 25,
           ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: _Footer(_onItemTapped, _selectedIndex),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: _Footer(_onItemTapped, _selectedIndex),
       ),
     );
   }
