@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 
 class DailyTransactionHeader extends StatelessWidget {
+  final Jiffy date;
+
+  const DailyTransactionHeader(this.date);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -9,7 +14,7 @@ class DailyTransactionHeader extends StatelessWidget {
         Row(
           children: [
             Text(
-              "20",
+              date.day.toString(),
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(
@@ -23,7 +28,7 @@ class DailyTransactionHeader extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 child: Text(
-                  "Sun",
+                  date.format('EEE'),
                   style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ),

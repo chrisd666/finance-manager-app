@@ -1,3 +1,5 @@
+import 'package:jiffy/jiffy.dart';
+
 class Transaction {
   final DateTime date;
   final String category, account;
@@ -10,6 +12,13 @@ class Transaction {
       required this.account,
       required this.amount,
       this.note});
+}
+
+class GroupedTransaction {
+  final Jiffy date;
+  final List<Transaction> transactions;
+
+  GroupedTransaction(this.date, this.transactions);
 }
 
 List<Transaction> transactions = [
@@ -33,6 +42,11 @@ List<Transaction> transactions = [
       category: "Eating",
       account: 'Other',
       amount: 60),
+  Transaction(
+      date: DateTime(2021, 05, 20, 18, 45),
+      category: "Charity",
+      account: 'Other',
+      amount: 1200),
   Transaction(
       date: DateTime(2021, 05, 20, 18, 45),
       category: "Charity",
