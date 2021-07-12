@@ -31,19 +31,19 @@ class _Body extends StatefulWidget {
 }
 
 class __BodyState extends State<_Body> {
-  int activeDay = 4;
-
-  List<ExpansionPanel> getDailyGroupedTransactions() {
+  var _groupedTransactions = () {
     Map<String, List<Transaction>> dailyGroupedTransactions =
         groupBy(transactions, (Transaction transaction) {
       return Jiffy(transaction.date).format("dd-MM-yyyy");
     });
 
-    var result = [];
+    List<GroupedTransaction> result = [];
 
     dailyGroupedTransactions.forEach((date, list) {
       result.add(GroupedTransaction(Jiffy(date, "dd-MM-yyyy"), list));
     });
+
+    return result;
 
     return result.map((e) {
       return ExpansionPanel(
@@ -54,9 +54,9 @@ class __BodyState extends State<_Body> {
               child: DailyTransactionHeader(e.date),
             );
           },
-          body: DailyTransactionBody());
+          body: DailyTransactionBody(e.transactions));
     }).toList();
-  }
+  }();
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +89,23 @@ class __BodyState extends State<_Body> {
           SizedBox(
             height: 30,
           ),
-          ExpansionPanelList(
-              expandedHeaderPadding: EdgeInsets.symmetric(vertical: 8),
-              expansionCallback: (index, isExpanded) {},
-              children: getDailyGroupedTransactions())
+          Container(
+            margin: EdgeInsets.only(bottom: 40),
+            child: ExpansionPanelList(
+                expandedHeaderPadding: EdgeInsets.symmetric(vertical: 8),
+                expansionCallback: (index, isExpanded) {},
+                children: _groupedTransactions.map((e) {
+                  return ExpansionPanel(
+                      isExpanded: true,
+                      headerBuilder: (context, isExpanded) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: DailyTransactionHeader(e.date),
+                        );
+                      },
+                      body: DailyTransactionBody(e.transactions));
+                }).toList()),
+          )
         ],
       ),
     );

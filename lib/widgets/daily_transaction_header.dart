@@ -14,7 +14,7 @@ class DailyTransactionHeader extends StatelessWidget {
         Row(
           children: [
             Text(
-              date.day.toString(),
+              date.format('dd'),
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(
@@ -22,9 +22,16 @@ class DailyTransactionHeader extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.red,
+                  color:
+                      date.format('EEE') == 'Sun' || date.format('EEE') == 'Sat'
+                          ? Colors.red
+                          : Colors.blue,
                   borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: Colors.red)),
+                  border: Border.all(
+                      color: date.format('EEE') == 'Sun' ||
+                              date.format('EEE') == 'Sat'
+                          ? Colors.red
+                          : Colors.blue)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 child: Text(

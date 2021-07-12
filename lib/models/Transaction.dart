@@ -23,9 +23,19 @@ class GroupedTransaction {
 
 List<Transaction> transactions = [
   Transaction(
-      date: DateTime(2021, 06, 24, 22, 25),
+      date: DateTime(2021, 07, 12, 22, 25),
       category: "Bank",
-      account: 'Other',
+      account: 'Testing',
+      amount: 340),
+  Transaction(
+      date: DateTime(2021, 07, 11, 22, 25),
+      category: "Bank",
+      account: 'Testing',
+      amount: 340),
+  Transaction(
+      date: DateTime(2021, 07, 10, 22, 25),
+      category: "Bank",
+      account: 'Testing',
       amount: 340),
   Transaction(
       date: DateTime(2021, 06, 23, 21, 15),
@@ -46,6 +56,7 @@ List<Transaction> transactions = [
       date: DateTime(2021, 05, 20, 18, 45),
       category: "Charity",
       account: 'Other',
+      note: 'Choco mocho biscoot',
       amount: 1200),
   Transaction(
       date: DateTime(2021, 05, 20, 18, 45),
